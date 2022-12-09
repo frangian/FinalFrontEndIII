@@ -1,22 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextGlobal } from "./utils/global.context";
-import { removeTokenFromStorage } from "./utils/localStorage.service";
-import styles from "./Navbar.module.css";
+import './stylesheets/Navbar.css';
 
 const Navbar = () => {
-  const { theme, setDarkTheme, setLightTheme, login, setLogout } =
-    useContext(ContextGlobal);
+  const { theme, setDarkTheme, setLightTheme } = useContext(ContextGlobal);
   const isDarkMode = theme === "dark" || false;
 
   const changeTheme = () => {
     if (isDarkMode) setLightTheme();
     else setDarkTheme();
-  };
-
-  const logout = () => {
-    setLogout();
-    removeTokenFromStorage();
   };
 
   return (
@@ -28,8 +21,8 @@ const Navbar = () => {
         aria-label="Third navbar example"
       >
         <div className="container">
-          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/home">
-            Redmond Odonto
+          <Link className={'navbarBrand'} to="/home">
+            Clinica Odontologica Gianzanti
           </Link>
           <button
             className="navbar-toggler"
@@ -48,19 +41,19 @@ const Navbar = () => {
             id="navbarsExample03"
           >
             <ul className="navbar-nav mb-2 mb-sm-0">
-              <li className={`nav-item ${styles.navBarLink}`}>
+              <li className={'nav-item navBarLink'}>
                 <Link className="nav-link" to="/home">
                   Home
                 </Link>
               </li>
-              <li className={`nav-item ${styles.navBarLink}`}>
-                <Link className="nav-link" to="/favs">
-                  Favs
-                </Link>
-               </li>
-               <li className={`nav-item ${styles.navBarLink}`}>
+               <li className={'nav-item navBarLink'}>
                <Link className="nav-link" to="/contact">
                   Contacto
+                </Link>
+               </li>
+              <li className={'nav-item navBarLink'}>
+                <Link className="nav-link" to="/favs">
+                  Favoritos
                 </Link>
                </li>
              
@@ -68,11 +61,8 @@ const Navbar = () => {
           
               <li className={`nav-item`}>
                 <button
-                  className={`btn btn-${isDarkMode ? "light" : "dark"} ${
-                    styles.btnStyle
-                  }`}
-                  onClick={changeTheme}
-                >
+                  className={`btn btn-${isDarkMode ? "light" : "dark"} btnStyle`}
+                  onClick={changeTheme} >
                   {isDarkMode ? "☀" : "🌙"}{" "}
                 </button>
               </li>
