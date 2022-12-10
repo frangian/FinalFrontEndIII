@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 
 const Form = () => {
-  const [nombreCompleto, cambiarNombreCompleto] = useState({campo: '', valido: null});
+  const [nombreApellido, cambiarNombreCompleto] = useState({campo: '', valido: null});
   const [email, cambiarEmail] = useState({campo: '', valido: null});
   const onChange = (e) =>{
-    cambiarNombreCompleto({...nombreCompleto, campo: e.target.value})
+    cambiarNombreCompleto({...nombreApellido, campo: e.target.value})
   }
 
   const onChange2 = (e) =>{
@@ -17,15 +17,15 @@ const Form = () => {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   }
 
-  const validacion = () =>{
-    if(expresiones.nombre.test(nombreCompleto.campo)){
-      cambiarNombreCompleto({...nombreCompleto, valido: 'true'})
+  const validacionNombre = () =>{
+    if(expresiones.nombre.test(nombreApellido.campo)){
+      cambiarNombreCompleto({...nombreApellido, valido: 'true'})
     } else {
-      cambiarNombreCompleto({...nombreCompleto, valido: 'false'})
+      cambiarNombreCompleto({...nombreApellido, valido: 'false'})
     }
   }
 
-  const validacion2 = () =>{
+  const validacionEmail = () =>{
     if(expresiones.correo.test(email.campo)){
       cambiarEmail({...email, valido: 'true'})
     } else {
@@ -35,11 +35,11 @@ const Form = () => {
   
   const onSubmit = (e) =>{
     e.preventDefault();
-    if(email.valido === 'true' && nombreCompleto.valido === 'true'){
+    if(email.valido === 'true' && nombreApellido.valido === 'true'){
       let validacionTrue = document.getElementById("validacionVerdadera");
       let validacionFalse = document.getElementById("validacionFalsa");
       validacionFalse.innerHTML = "";
-      validacionTrue.innerHTML = "<p>Gracias " + nombreCompleto.campo + ", te contactaremos cuanto antes via email. </p>";
+      validacionTrue.innerHTML = "<p>Gracias " + nombreApellido.campo + ", te contactaremos cuanto antes via email. </p>";
     } else {
       let validacionFalse = document.getElementById("validacionFalsa");
       validacionFalse.innerHTML = "<p>Algo salió mal, verifique sus datos e ingréselos nuevamente.</p>";
@@ -53,13 +53,13 @@ const Form = () => {
       <form onSubmit={onSubmit}>
           <label htmlFor="nombreApellido"></label>
           <input 
-            type="text" 
             id="nombreApellido" 
+            type="text" 
             placeholder="Nombre y apellido" 
-            value={nombreCompleto.campo} 
+            value={nombreApellido.campo} 
             onChange={onChange}
-            onKeyUp={validacion}
-            onBlur={validacion}
+            onKeyUp={validacionNombre}
+            onBlur={validacionNombre}
           />
           <label htmlFor="email"></label>
           <input 
@@ -68,8 +68,8 @@ const Form = () => {
             placeholder="Email" 
             value={email.campo} 
             onChange={onChange2}
-            onKeyUp={validacion2}
-            onBlur={validacion2}
+            onKeyUp={validacionEmail}
+            onBlur={validacionEmail}
           />
           <button type="submit" >Submit</button>
       </form>

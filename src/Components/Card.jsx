@@ -30,13 +30,13 @@ const Card = ({  username, id, name }) => {
       <img
         className="card-img-top"
         src="/images/doctor.jpg"
-        alt="doctor placeholder"
+        alt="doctor"
       />
       <div className={`card-body ${styles.CardBody}`}>
         <Link to={`/users/${id}`}>
-          <h5 className={`card-title ${styles.title}`}>{name}</h5>
+          <h3 className={`card-title ${styles.title}`}>{name}</h3>
         </Link>
-        <p className="card-text">{username}</p>
+        <p>{username}</p>
         <button
           onClick={favorite ? removeFav : addFav}
           className={`btn btn-${isDarkMode ? "dark" : "light"} ${styles.favButton}`}>
