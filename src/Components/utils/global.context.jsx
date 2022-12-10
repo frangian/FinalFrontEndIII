@@ -1,5 +1,6 @@
-import { createContext, useMemo, useReducer } from "react";
+import { createContext, useMemo, useReducer, useEffect } from "react";
 import { actions, initialState, reducer } from "./reducer.service";
+
 
 export const ContextGlobal = createContext(undefined);
 

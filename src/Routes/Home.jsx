@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from '../Components/Card'
+
 import axios from "axios";
 
 const Home = () => {
@@ -16,7 +17,14 @@ const Home = () => {
     <>
       <h1>Home</h1>
       <div className="card-grid container">
-        {data.map(resp => <Card key={resp.id} name={resp.name} username={resp.username} id={resp.id} />)}
+        {data.map(resp => 
+          <Card 
+            key={resp.id} 
+            name={resp.name} 
+            username={resp.username} 
+            id={resp.id} 
+          />
+        )}
       </div>
     </>
   )

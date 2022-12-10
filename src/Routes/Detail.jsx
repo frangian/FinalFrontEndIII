@@ -1,16 +1,33 @@
-import React from 'react'
-import DetailCard from "../Components/DetailCard";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { H1, Tabla, TablaTitulo, TablaValor , Tr } from "../Components/stylesheets/styledComponents.jsx"
 
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
- 
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  const [dataDen, setDataDen] = useState([])
+  const { id } = useParams();
 
+  useEffect(() => {
+    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(respuesta => setDataDen(respuesta.data))
+  }, [id]);
+
+  const campos = ["name", "email", "phone", "website"];
+ 
   return (
     <>
-      <DetailCard />
+      <H1>Informacion Dentista { id } </H1>
+      <Tabla>
+        <tbody>
+          {campos.map(campos => (
+            <Tr key={campos}>
+              <TablaTitulo>{campos}</TablaTitulo>
+              <TablaValor>{dataDen[campos]}</TablaValor>
+            </Tr>
+          ))}
+        </tbody>
+      </Tabla>
     </>
   )
 }

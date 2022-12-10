@@ -1,19 +1,22 @@
 import React from "react";
 import Card from "../Components/Card";
+import { FavContainer, H1 } from "../Components/stylesheets/styledComponents";
 import { getFavFromStorage } from "../Components/utils/localStorage.service";
 
 const Favs = () => {
   const DentistasFavoritos = getFavFromStorage();
 
   return (
-    <>
-      <h1>Dentistas Favoritos</h1>
+    <FavContainer>
+      <H1>Dentistas Favoritos</H1>
       <div className="card-grid">
-          {DentistasFavoritos.map((favs) => (
-              <Card {...favs} key={favs.id} />))
-          }
+        {DentistasFavoritos.map((dentista) => (
+          <Card {...dentista} 
+            key={dentista.id} 
+          />
+        ))}
       </div>
-    </>
+    </FavContainer>
   );
 };
 
