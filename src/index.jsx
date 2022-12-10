@@ -7,7 +7,7 @@ import App from "./App";
 import Home from "./Routes/Home";
 import Detail from "./Routes/Detail";
 import Favs from "./Routes/Favs";
-import ContactForm from "./Routes/Contact";
+import Contact from "./Routes/Contact";
 import { ContextProvider } from "./Components/utils/global.context";
 import "./index.css";
 
@@ -21,7 +21,7 @@ root.render(
             <Route index path="/home" element={<Home />} />
             <Route path="/users/:id" element={<Detail />} />
             <Route path="/favs" element={<Favs />} />
-            <Route path="/contact" element={<ContactForm />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>
       </ContextProvider>

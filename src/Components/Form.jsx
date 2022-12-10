@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 
-const ContactForm = () => {
+const Form = () => {
   const [nombreCompleto, cambiarNombreCompleto] = useState({campo: '', valido: null});
   const [email, cambiarEmail] = useState({campo: '', valido: null});
-  const [cambiarFormularioValido] = useState(null);
   const onChange = (e) =>{
     cambiarNombreCompleto({...nombreCompleto, campo: e.target.value})
   }
@@ -37,13 +36,11 @@ const ContactForm = () => {
   const onSubmit = (e) =>{
     e.preventDefault();
     if(email.valido === 'true' && nombreCompleto.valido === 'true'){
-      cambiarFormularioValido(true)
       let validacionTrue = document.getElementById("validacionVerdadera");
       let validacionFalse = document.getElementById("validacionFalsa");
       validacionFalse.innerHTML = "";
       validacionTrue.innerHTML = "<p>Gracias " + nombreCompleto.campo + ", te contactaremos cuanto antes via email. </p>";
     } else {
-      cambiarFormularioValido(false)
       let validacionFalse = document.getElementById("validacionFalsa");
       validacionFalse.innerHTML = "<p>Algo salió mal, verifique sus datos e ingréselos nuevamente.</p>";
       let validacionTrue = document.getElementById("validacionVerdadera");
@@ -82,4 +79,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default Form;
