@@ -2,6 +2,11 @@
 
 Examen Final de Frontend III
 
+## Integrantes
+
+Alfonso Garcia Mansilla
+Francisco Gianzanti
+
 ## Indice
 
 - [Requisitos](#requisitos)
