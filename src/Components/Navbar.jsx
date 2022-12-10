@@ -22,7 +22,7 @@ const Navbar = () => {
       >
         <div className="container">
           <Link className={'navbarBrand'} to="/home">
-            Clinica Odontologica Gianzanti
+            Clinica Odontologica AFG
           </Link>
           <button
             className="navbar-toggler"
