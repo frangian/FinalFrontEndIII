@@ -7,7 +7,7 @@ import App from "./App";
 import Home from "./Routes/Home";
 import Detail from "./Routes/Detail";
 import Favs from "./Routes/Favs";
-import ContactForm from "./Routes/ContactForm";
+import ContactForm from "./Routes/Contact";
 import { ContextProvider } from "./Components/utils/global.context";
 import "./index.css";
 

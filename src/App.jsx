@@ -1,8 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { ContextGlobal } from './Components/utils/global.context';
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
-import { ContextGlobal } from './Components/utils/global.context';
 
 function App() {
   const location = useLocation();
