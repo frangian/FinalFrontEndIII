@@ -1,30 +1,31 @@
 import React from "react";
 import { useState } from "react";
 
-
-const Form = () => {
-  //Aqui deberan implementar el form completo con sus validaciones
+const ContactForm = () => {
   const [nombreCompleto, cambiarNombreCompleto] = useState({campo: '', valido: null});
   const [email, cambiarEmail] = useState({campo: '', valido: null});
-  const [formularioValido, cambiarFormularioValido] = useState(null);
+  const [cambiarFormularioValido] = useState(null);
   const onChange = (e) =>{
     cambiarNombreCompleto({...nombreCompleto, campo: e.target.value})
   }
+
   const onChange2 = (e) =>{
     cambiarEmail({...email, campo: e.target.value})
   }
+
   const expresiones = {
-    nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   }
+
   const validacion = () =>{
     if(expresiones.nombre.test(nombreCompleto.campo)){
       cambiarNombreCompleto({...nombreCompleto, valido: 'true'})
     } else {
       cambiarNombreCompleto({...nombreCompleto, valido: 'false'})
-
     }
   }
+
   const validacion2 = () =>{
     if(expresiones.correo.test(email.campo)){
       cambiarEmail({...email, valido: 'true'})
@@ -32,6 +33,7 @@ const Form = () => {
       cambiarEmail({...email, valido: 'false'})
     }
   }
+  
   const onSubmit = (e) =>{
     e.preventDefault();
     if(email.valido === 'true' && nombreCompleto.valido === 'true'){
@@ -39,7 +41,7 @@ const Form = () => {
       let validacionTrue = document.getElementById("validacionVerdadera");
       let validacionFalse = document.getElementById("validacionFalsa");
       validacionFalse.innerHTML = "";
-      validacionTrue.innerHTML = "<p>Gracias " + nombreCompleto.campo + ", te contactaremos cuanto antes via mail. </p>";
+      validacionTrue.innerHTML = "<p>Gracias " + nombreCompleto.campo + ", te contactaremos cuanto antes via email. </p>";
     } else {
       cambiarFormularioValido(false)
       let validacionFalse = document.getElementById("validacionFalsa");
@@ -53,8 +55,6 @@ const Form = () => {
     <div>
       <form onSubmit={onSubmit}>
           <label htmlFor="nombreApellido"></label>
-          <h1>¿Quieres más informacion?</h1>
-          <h5>Completa los campos y nosotros te contactaremos.</h5>
           <input 
             type="text" 
             id="nombreApellido" 
@@ -82,4 +82,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default ContactForm;
