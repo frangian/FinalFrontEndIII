@@ -21,8 +21,8 @@ const Navbar = () => {
         aria-label="Third navbar example"
       >
         <div className="container">
-          <Link className={'navbarBrand'} to="/home">
-          Clinica Odontologica AFG
+          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/home">
+            Redmond Odonto
           </Link>
           <button
             className="navbar-toggler"
