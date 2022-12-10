@@ -11,24 +11,19 @@ const Card = ({  username, id, name }) => {
   const { theme } = useContext(ContextGlobal);
   const isDarkMode = theme === "dark" || false;
 
-  const isFavorite = (favorite) => {
+  const isFav = (favorite) => {
     setFavorite(favorite);
   };
 
   const addFav = () => {
     const favorite = setFavInStorage({ id, name, username });
-    isFavorite(favorite);
+    isFav(favorite);
   };
 
   const removeFav = () => {
     const favorite = removeFavInStorage(id);
-    isFavorite(favorite);
-    reload();
+    isFav(favorite);
   };
-
-  const reload = ()=>{
-    window.location.reload();
-  }
 
   return (
     <div className={`card ${isDarkMode ? styles.cardDark : ""}`}>
@@ -44,10 +39,7 @@ const Card = ({  username, id, name }) => {
         <p className="card-text">{username}</p>
         <button
           onClick={favorite ? removeFav : addFav}
-          className={`btn btn-${isDarkMode ? "dark" : "light"} ${
-            styles.favButton
-          }`}
-        >
+          className={`btn btn-${isDarkMode ? "dark" : "light"} ${styles.favButton}`}>
           {favorite ? <StarIcon sx={{ color: yellow[700] }}/> :<StarIcon sx={{ color: yellow[50] }}/>}
         </button>
       </div>

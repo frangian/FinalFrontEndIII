@@ -11,11 +11,10 @@ const DetailCard = () => {
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(res => {
         setData(res.data);
-      }
-      )
+      })
   })
 
-  // console.log(data)
+  console.log(data)
 
   return (
     <>

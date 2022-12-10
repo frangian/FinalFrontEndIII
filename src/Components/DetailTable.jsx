@@ -24,7 +24,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	'&:last-child td, &:last-child th': {	border: 0	},
 }));
 
-
 export default function DetailTable({ name, username, id,email,phone,website }) {
 	return (
 		<TableContainer component={Paper}>
